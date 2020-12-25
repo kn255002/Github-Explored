@@ -1,0 +1,83 @@
+
+git config --global user.name "kn255002"
+git config --global user.email "khurram.deutsch@yahoo.com"
+git config --global http.sslverify false
+#git -c http.sslVerify=false clone https://github.com/kn255002/AI_CLASS_2
+
+git --version
+##	git version 2.29.2.windows.3
+
+##	Asking help on git command.
+git add --help
+
+##	The below 2 lines tells who is modifying code/checkin/checkout
+git config --global user.name "kn255002"
+git config --global user.email "khurram.deutsch@yahoo.com"
+#git config --global http.sslverify false
+git config --global --replace http.sslverify false
+git config --list
+
+
+##	Assumption:	Over the web github.com you already created repository "AI-Engineering". Now you want to link with Local-FS directory.
+##	Following command to execute on Local-FS.
+
+$ mkdir AI-Engineering
+$ cd AI-Engineering
+$ mkdir semester-1
+$ mkdir semester-2
+
+git init .		#This folder will be initialized by creating a hidden directory ".git".
+##rm -rf .git 		#If you remove this hidden directory then Repository Synch will be stopped.
+
+
+##	You may copy/modify following 1,2 Lines from the web repository to set the configuration on Local-FS.
+git remote add origin https://github.com/kn255002/AI-Engineering.git
+
+##	Switch to suitable branch as per web repository settings (default branch="master").
+##	Check available branches
+git branch -v
+
+##	Switch to suiable branch.
+git branch -M main #or# git checkout master #or# git checkout main # or git checkout -b main
+
+##	You are in working area and create/modify/add folders or files.
+ 
+##	You are in Staging Area
+##git add .					##Include everything in this dir/place
+git add --all	##Include everything, 
+git add thisfileonly.txt	##Include single file
+git reset thisfileonly.txt	##Exclude this single file
+git commit -m "Files are uploading to git-web."	##Commit staging, you get hashnumber
+git log					##hashnumber generated: 9975b2e2b59d0d07cefeb60a9f277e485dd439d8 (HEAD -> main)
+##	You were in Staging Area
+git config --list	#Make sure configuration/paramters are correct.
+
+git remote -v		#Make sure, web configuration are correct to PUSH/PULL data from the web.
+##	Now you are ready to shift Staging data to Upload over the web repository.
+git push -u origin main		#You mentioned which branch to use (main/master/any speical) while pushing data over the web.
+##git push
+##git push -u origin --all
+
+git status
+
+
+####################################################################################
+#Assume Web Respository already existing.
+#You are 1st-Time, Copying Remote/Web Repository on Your Disk Local-FS
+####################################################################################
+mkdir AI-Engineering
+cd AI-Engineering
+##	Now in this directory download/clone web repository.
+#git clone webpath /localFS  
+git clone https://github.com/kn255002/AI-Engineering . 
+
+################### Pull Repository on Your local-FS in existing directory###############
+##	You check hidden directory (.git) MUST be existing in this folder prior to pull command.
+pwd
+/c/Users/kn255002/Documents/GitHub/AI-Engineering
+ls -al
+drwxr-xr-x 1 kn255002 1049089 0 Dec 24 13:37 .git/
+
+##Execute below command its successfully downloaded data from web to existing git directory
+
+#git pull
